@@ -1,0 +1,4 @@
+#experimentos aleatorias
+import numpy as np
+def lanzar_dado():
+    return 

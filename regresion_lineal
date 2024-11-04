@@ -1,0 +1,24 @@
+import numpy as np
+import pandas as pd
+import math
+from scipy.optimize import minimize
+import matplotlib.pyplot as pls
+from sklearn.model_selection import train_test_split
+
+# Utilidades
+import os
+import sys
+
+# Directorio actual
+current_dir = os.getcwd()
+
+# Directorio padre
+utils_dir = os.path.join(current_dir, os.pardir, 'C:\Diplomado Machine Learning\Notebooks-20240910\utils')
+sys.path.append(utils_dir)
+
+# importación de graficadores
+from graficadores import * 
+
+#load_ext autoreload
+#autoreload 2
+#reload_ext autoreload

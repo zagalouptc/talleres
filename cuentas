@@ -1,0 +1,18 @@
+import os
+import numpy as np
+os.system('cls')
+r=0.1
+s0=80000000
+#s0=8000
+t=3
+k=(r*s0*np.exp(r*t))/(np.exp(r*t)-1)
+print(k)
+intereses=s0-k*3
+print('intereses i=',intereses)
+dias_percnotando=11
+valor_dia_dolares=380
+valor_dolar_hoy=4200.43
+valor_dia=380*4200
+print(valor_dia)
+total=dias_percnotando*valor_dia_dolares*valor_dolar_hoy
+print(total)

@@ -1,0 +1,23 @@
+# Detección de mínimos de una función por método analítico
+import sympy as sp
+def encontrar_minimo_univariante(funcion, variable):
+    # Paso 1: Derivación
+    derivada = sp.diff(funcion, variable)
+
+    # Paso 2: Resolución de Ecuaciones
+    puntos_criticos = sp.solve(derivada, variable)
+
+    # Paso 3: Análisis de Segunda Derivada (Opcional)
+    segunda_derivada = sp.diff(derivada, variable)
+
+    # Paso 4: Análisis Adicional (Opcional)
+    minimos_locales = [p for p in puntos_criticos if segunda_derivada.subs(variable, p) > 0]
+
+    return minimos_locales
+
+# Ejemplo de uso
+x = sp.symbols('x')
+funcion_ejemplo = x**4 - 8*x**3 + 18*x**2
+minimos_encontrados = encontrar_minimo_univariante(funcion_ejemplo, x)
+
+print("Minimos encontrados:", minimos_encontrados)

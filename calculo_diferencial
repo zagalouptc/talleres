@@ -1,0 +1,69 @@
+import numpy as np
+import pandas as pd
+import math
+import sympy as sp
+from scipy.optimize import minimize
+import matplotlib.pyplot as pls
+from sklearn.model_selection import train_test_split
+
+# Utilidades
+import os
+import sys
+os.system('cls')
+# Directorio actual
+current_dir = os.getcwd()
+
+# Directorio padre
+#utils_dir = os.path.join(current_dir, os.pardir, 'utils')
+utils_dir = os.path.join(current_dir, os.pardir, 'C:/Diplomado Machine Learning/Notebooks-20240910/utils')
+sys.path.append(utils_dir)
+
+# importación de graficadores
+from graficadores import *
+#ejemplo_de_minimos()
+
+def quartic_function(x):
+     return x**4 - 8*x**3 + 18*x**2
+
+y=quartic_function(3)
+print(y)
+xi=-10
+xf=10
+n=100
+inc=(xf-xi)/100
+x=[xi+i*inc for i in range(n)]
+#print(x)
+y=[]
+for valor in x:
+ y.append(quartic_function(valor))
+label='función cuartica'
+plt.figure(figsize=(6, 6))
+plt.plot(x, y)
+plt.title('función cuartica')
+plt.xlabel('eje x')
+plt.ylabel('eje y')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+def encontrar_minimo_univariante(funcion, variable):
+    # Paso 1: Derivación
+    derivada = sp.diff(funcion, variable)
+
+    # Paso 2: Resolución de Ecuaciones
+    puntos_criticos = sp.solve(derivada, variable)
+
+    # Paso 3: Análisis de Segunda Derivada (Opcional)
+    segunda_derivada = sp.diff(derivada, variable)
+
+    # Paso 4: Análisis Adicional (Opcional)
+    minimos_locales = [p for p in puntos_criticos if segunda_derivada.subs(variable, p) > 0]
+
+    return minimos_locales
+
+# Ejemplo de uso
+x = sp.symbols('x')
+funcion_ejemplo = x**4 - 8*x**3 + 18*x**2
+minimos_encontrados = encontrar_minimo_univariante(funcion_ejemplo, x)
+
+print("Minimos encontrados:", minimos_encontrados)
